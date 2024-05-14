@@ -5,6 +5,7 @@ from bot import Bot
 
 # init client point to the local server, api_key is irrelevant
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
+model_name = "NousResearch/Hermes-2-Pro-Llama-3-8B-GGUF"
 
 system_message_file = "system_message.txt"
 
@@ -19,7 +20,7 @@ def load_system_message():
 
 def create_chat_completion(q, sm):
     return client.chat.completions.create(
-        model="NousResearch/Hermes-2-Pro-Llama-3-8B-GGUF",
+        model=model_name,
         messages=[
             {"role": "system", "content": sm},
             {"role": "user", "content": q}
