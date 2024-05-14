@@ -11,3 +11,5 @@ log.txt
 **/.ipynb_chechpoints
 __pycache__
 **/__pycache__
+
+chroma_db
