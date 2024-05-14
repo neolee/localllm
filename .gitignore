@@ -1,0 +1,13 @@
+.DS_Store
+**/.DS_Store
+log.txt
+**/log.txt
+**/*.log
+
+.idea
+
+.python-version
+.ipynb_checkpoints/
+**/.ipynb_chechpoints
+__pycache__
+**/__pycache__
