@@ -1,4 +1,5 @@
 from builtin_bots import *
+from llm_bot import LLMBot
 
 
 class Garfield:
@@ -58,4 +59,5 @@ if __name__ == '__main__':
     garfield.add(GreetingBot())
     garfield.add(FavoriteColorBot())
     garfield.add(CalcBot('looped'))
+    garfield.add(LLMBot('looped'))
     garfield.run()
