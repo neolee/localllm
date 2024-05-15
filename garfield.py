@@ -1,5 +1,5 @@
 from builtin_bots import *
-from llm_bot import LLMBot
+from llm_bot import LLMBot, StreamLLMBot
 
 
 class Garfield:
@@ -60,4 +60,5 @@ if __name__ == '__main__':
     garfield.add(FavoriteColorBot())
     garfield.add(CalcBot('looped'))
     garfield.add(LLMBot('looped'))
+    garfield.add(StreamLLMBot())
     garfield.run()

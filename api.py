@@ -16,12 +16,20 @@ def load_system_message():
         system_message = f"{f.read().replace(newline, ' ')}".format(**globals())
     return system_message
 
-def create_chat_completion(q, sm):
+def simple_chat_completion(q, sm):
     return client.chat.completions.create(
         model=model_name,
         messages=[
             {"role": "system", "content": sm},
             {"role": "user", "content": q}
         ],
+        temperature=0.7
+    )
+
+def stream_chat_completion(history):
+    return client.chat.completions.create(
+        model=model_name,
+        messages=history, # type: ignore
         temperature=0.7,
+        stream=True
     )
