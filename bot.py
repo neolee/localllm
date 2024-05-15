@@ -31,7 +31,7 @@ class Bot:
         self._say(self.q)
         while True:
             self.a = input()
-            if self.a.lower() in ['q', 'x', 'quit', 'exit']:
+            if self.a.lower() in ['q', 'x', 'quit', 'exit', 'bye']:
                 break
             self._say(self._think(self.a))
 
