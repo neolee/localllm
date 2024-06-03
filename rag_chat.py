@@ -1,22 +1,14 @@
-from openai import OpenAI
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 
-import json
+from api import stream_chat_completion, stringify_history
 
 
 def show_history(history):
-    gray_color = "\033[90m"
-    reset_color = "\033[0m"
-    print(f"{gray_color}\n{'-'*20} History dump {'-'*20}\n")
-    print(json.dumps(history, indent=2))
-    print(f"\n{'-'*55}\n{reset_color}")
+    print(stringify_history(history))
 
 
 def main():
-    # Point to the local server
-    client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
-
     embedding_function=HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vector_db = Chroma(persist_directory="./chroma_db", embedding_function=embedding_function)
 
@@ -26,12 +18,7 @@ def main():
     ]
 
     while True:
-        completion = client.chat.completions.create(
-            model="local-model",
-            messages=history, # type: ignore
-            temperature=0.7,
-            stream=True
-        )
+        completion = stream_chat_completion(history)
 
         message = {"role": "assistant", "content": ""}
         for chunk in completion:

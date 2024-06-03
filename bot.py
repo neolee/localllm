@@ -1,5 +1,5 @@
 from time import sleep
-from termcolor import colored
+from termcolor import colored, cprint
 
 
 class Bot:
@@ -14,13 +14,15 @@ class Bot:
     def _think(self, s):
         return s
 
-    @staticmethod
-    def _format(s):
-        return colored(s, 'blue')
+    def _format(self, s, c='blue'):
+        return colored(s, c) # type: ignore
+
+    def _print(self, s, c='blue'):
+        cprint(s, c) # type: ignore
 
     def _say(self, s):
         sleep(Bot.wait)
-        print(self._format(s))
+        self._print(s)
 
     def _run_once(self):
         self._say(self.q)

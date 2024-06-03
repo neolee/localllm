@@ -1,5 +1,7 @@
 from openai import OpenAI
 
+import json
+
 
 # init client point to the local server, api_key is irrelevant
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
@@ -33,3 +35,9 @@ def stream_chat_completion(history):
         temperature=0.7,
         stream=True
     )
+
+def stringify_history(history):
+    s = f"\n{'-'*20} History dump {'-'*20}\n"
+    s += json.dumps(history, indent=2)
+    s += f"\n{'-'*55}"
+    return s
