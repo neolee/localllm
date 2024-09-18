@@ -1,6 +1,7 @@
 from garfield.bots.builtin import *
 from garfield.bots.llm import SimpleLLMBot, LLMBot
 from garfield.bots.rag import RAGBot
+from garfield.bots.cot import CoTBot
 
 
 class Garfield:
@@ -62,4 +63,5 @@ if __name__ == '__main__':
     garfield.add(SimpleLLMBot('looped'))
     garfield.add(LLMBot())
     garfield.add(RAGBot())
+    garfield.add(CoTBot())
     garfield.run()
