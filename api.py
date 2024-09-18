@@ -5,7 +5,8 @@ import json
 
 # init client point to the local server, api_key is irrelevant
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
-model_name = "NousResearch/Hermes-2-Pro-Llama-3-8B-GGUF"
+model_name = "NousResearch/Hermes-3-Llama-3.1-8B-GGUF/Hermes-3-Llama-3.1-8B.Q8_0.gguf"
+# model_name = "bartowski/Qwen2.5-32B-Instruct-GGUF/Qwen2.5-32B-Instruct-IQ4_XS.gguf"
 
 system_message_file = "system_message.txt"
 
