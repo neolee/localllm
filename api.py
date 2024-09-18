@@ -28,12 +28,12 @@ def simple_chat_completion(q, sm):
         temperature=0.7
     )
 
-def stream_chat_completion(history):
+def chat_completion(stream, history):
     return client.chat.completions.create(
         model=model_name,
         messages=history, # type: ignore
         temperature=0.7,
-        stream=True
+        stream=stream
     )
 
 def stringify_history(history):

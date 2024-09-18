@@ -1,7 +1,7 @@
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 
-from api import stream_chat_completion, stringify_history
+from api import chat_completion, stringify_history
 
 
 def show_history(history):
@@ -18,7 +18,7 @@ def main():
     ]
 
     while True:
-        completion = stream_chat_completion(history)
+        completion = chat_completion(True, history)
 
         message = {"role": "assistant", "content": ""}
         for chunk in completion:

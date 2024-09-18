@@ -5,8 +5,8 @@ from garfield.bots.llm import LLMBot
 
 
 class RAGBot(LLMBot):
-    def __init__(self, runtype='custom', verbose=False):
-        super().__init__(runtype, verbose)
+    def __init__(self, runtype='custom', stream=True, verbose=False):
+        super().__init__(runtype, stream, verbose)
         self.embedding_function = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         self.vector_db = Chroma(persist_directory="./chroma_db",
                                 embedding_function=self.embedding_function)
