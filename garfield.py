@@ -1,5 +1,6 @@
-from builtin_bots import *
-from llm_bot import LLMBot, StreamLLMBot
+from garfield.bots.builtin import *
+from garfield.bots.llm import SimpleLLMBot, LLMBot
+from garfield.bots.rag import RAGBot
 
 
 class Garfield:
@@ -53,12 +54,12 @@ class Garfield:
 
 
 if __name__ == '__main__':
-    # garfield = Garfield()
     garfield = Garfield(1, 'list')
     garfield.add(HelloBot())
     garfield.add(GreetingBot())
     garfield.add(FavoriteColorBot())
     garfield.add(CalcBot('looped'))
-    garfield.add(LLMBot('looped'))
-    garfield.add(StreamLLMBot())
+    garfield.add(SimpleLLMBot('looped'))
+    garfield.add(LLMBot())
+    garfield.add(RAGBot())
     garfield.run()

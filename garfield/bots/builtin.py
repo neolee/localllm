@@ -1,7 +1,7 @@
 from random import choice
 from simpleeval import simple_eval, InvalidExpression
 
-from bot import Bot
+from garfield.bot import Bot
 
 
 class HelloBot(Bot):

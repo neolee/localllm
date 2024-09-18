@@ -1,10 +1,10 @@
-from bot import Bot
+from garfield.bot import Bot
 from api import load_system_message
 from api import simple_chat_completion, stream_chat_completion
 from api import stringify_history
 
 
-class LLMBot(Bot):
+class SimpleLLMBot(Bot):
     def __init__(self, runtype='looped'):
         super().__init__(runtype)
         self.q = "I'm now backed by the newest LLM. Let's talk."
@@ -15,7 +15,7 @@ class LLMBot(Bot):
         return completion.choices[0].message.content
 
 
-class StreamLLMBot(Bot):
+class LLMBot(Bot):
     def __init__(self, runtype='custom', verbose=False):
         super().__init__(runtype)
         self.verbose = verbose
@@ -28,6 +28,9 @@ class StreamLLMBot(Bot):
 
     def _show_history(self):
         self._print(stringify_history(self.history), 'light_grey')
+
+    def _preprocessing(self, q):
+        return q
 
     def run(self):
         while True:
@@ -48,4 +51,5 @@ class StreamLLMBot(Bot):
             print()
             q = input("> ")
             if q.lower() in ['q', 'x', 'quit', 'exit', 'bye']: break
-            self.history.append({"role": "user", "content": q})
+            context = self._preprocessing(q)
+            self.history.append({"role": "user", "content": context})
