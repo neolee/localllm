@@ -65,6 +65,7 @@ class LLMBot(Bot):
             else: print()
 
             q = input("> ")
-            if q.lower() in ['q', 'x', 'quit', 'exit', 'bye']: break
+            if self._is_command_quit(q): return Bot.EXIT_NORMAL
+            if self._is_command_restart(q): return Bot.EXIT_RESTART
             context = self._preprocessing(q)
             self.history.append({"role": "user", "content": context})

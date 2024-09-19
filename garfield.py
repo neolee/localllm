@@ -30,7 +30,7 @@ class Garfield:
         for bot in self.bots:
             bot.run()
 
-    def _run_list_mode(self):
+    def _menu_select(self):
         for index, bot in enumerate(self.bots):
             print(f"{index + 1}. {type(bot).__name__}")
 
@@ -49,9 +49,15 @@ class Garfield:
                 continue
             else:
                 break
+        return bot_index - 1
 
-        bot = self.bots[bot_index - 1]
-        bot.run()
+    def _run_list_mode(self):
+        while True:
+            bot_index = self._menu_select()
+            bot = self.bots[bot_index]
+            match bot.run():
+                case Bot.EXIT_RESTART: continue
+                case _: break
 
 
 if __name__ == '__main__':
