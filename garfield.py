@@ -55,6 +55,7 @@ class Garfield:
         while True:
             bot_index = self._menu_select()
             bot = self.bots[bot_index]
+            print()
             match bot.run():
                 case Bot.EXIT_RESTART: continue
                 case _: break

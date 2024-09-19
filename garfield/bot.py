@@ -25,6 +25,7 @@ class Bot:
     def _say(self, s):
         sleep(Bot.wait)
         self._print(s)
+        print()
 
     def _is_command_quit(self, s):
         return s.lower() in [':q', ':x', ':quit', ':exit', 'bye']
@@ -34,14 +35,16 @@ class Bot:
 
     def _run_once(self):
         self._say(self.q)
-        q = input()
+        q = input("> ")
+        if self._is_command_quit(q): return Bot.EXIT_NORMAL
+        if self._is_command_restart(q): return Bot.EXIT_RESTART
         self._say(self._think(q))
         return Bot.EXIT_NORMAL
 
     def _run_looped(self):
         self._say(self.q)
         while True:
-            q = input()
+            q = input("> ")
             if self._is_command_quit(q): return Bot.EXIT_NORMAL
             if self._is_command_restart(q): return Bot.EXIT_RESTART
             self._say(self._think(q))
