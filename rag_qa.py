@@ -1,5 +1,5 @@
-from langchain_community.vectorstores.chroma import Chroma
-from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_core.utils.utils import convert_to_secret_str
 from langchain_core.prompts import ChatPromptTemplate
