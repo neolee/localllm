@@ -6,7 +6,6 @@ from api import stringify_history
 import os
 os.environ["TRANSFORMERS_VERBOSITY"] = "error"
 os.environ["TOKENIZERS_PARALLELISM"] = "true"
-# and keep `transformers~=4.43.*` to prevent the `clean_up_tokenization_spaces` warning
 
 
 class SimpleLLMBot(Bot):
